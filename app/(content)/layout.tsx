@@ -8,7 +8,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { SectionTabs } from "@/components/sections/section-tabs";
 import { Sponsors } from "@/components/sections/sponsors";
 
-const age = 24.43;
+const age = 21.24087986222;
 
 export default function ContentLayout({
   children,

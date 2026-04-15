@@ -2,7 +2,7 @@ import Image from "next/image";
 
 interface ToolProps {
   name: string;
-  icon: string;
+  icon?: string;
 }
 
 interface ToolGroupProps {
@@ -12,31 +12,59 @@ interface ToolGroupProps {
 
 const toolGroups: ToolGroupProps[] = [
   {
+    title: "Languages",
+    tools: [
+      { name: "C++" },
+      { name: "C" },
+      { name: "Java" },
+      { name: "Python" },
+      { name: "JavaScript" },
+      { name: "SQL" },
+      { name: "SOQL" },
+      { name: "HTML/CSS" },
+    ],
+  },
+  {
     title: "Frontend",
     tools: [
-      { name: "React", icon: "/tools/react.svg" },
-      { name: "Next.js", icon: "/tools/nextjs_icon.svg" },
-      { name: "TailwindCSS", icon: "/tools/tailwindcss.svg" },
+      { name: "React.js" },
+      { name: "Next.js" },
+      { name: "TypeScript" },
+      { name: "Tailwind CSS" },
+      { name: "Bootstrap" },
+      { name: "WordPress" },
     ],
   },
   {
-    title: "Backend & Infrastructure",
+    title: "Backend & Database",
     tools: [
-      { name: "Node.js", icon: "/tools/nodejs.svg" },
-      { name: "Bun", icon: "/tools/bun.svg" },
-      { name: "PostgreSQL", icon: "/tools/postgresql.svg" },
-      { name: "Hono", icon: "/tools/hono.svg" },
-      { name: "Neon", icon: "/tools/neon.svg" },
-      { name: "Drizzle", icon: "/tools/drizzle-orm.svg" },
+      { name: "Node.js" },
+      { name: "MySQL" },
+      { name: "MongoDB" },
+      { name: "Supabase" },
+      { name: "API Integration" },
+      { name: "Axios" },
     ],
   },
   {
-    title: "Development Tools",
+    title: "Cloud & CRM",
     tools: [
-      { name: "Docker", icon: "/tools/docker.svg" },
-      { name: "Vitest", icon: "/tools/vitest.svg" },
-      { name: "PostHog", icon: "/tools/posthog.svg" },
-      { name: "Upstash", icon: "/tools/upstash.svg" },
+      { name: "Salesforce Data Cloud" },
+      { name: "Salesforce CRM" },
+      { name: "Data Modeling" },
+      { name: "Segmentation" },
+      { name: "Data Ingestion" },
+      { name: "Activation" },
+    ],
+  },
+  {
+    title: "Developer Tools",
+    tools: [
+      { name: "VS Code" },
+      { name: "Git" },
+      { name: "GitHub" },
+      { name: "Salesforce Setup" },
+      { name: "Docker" },
     ],
   },
 ];
@@ -44,10 +72,18 @@ const toolGroups: ToolGroupProps[] = [
 function ToolCard({ name, icon }: ToolProps) {
   return (
     <div className="flex flex-col items-center gap-2">
-      <div className="flex h-10 w-10 items-center justify-center">
-        <Image alt={name} height={32} loading="eager" src={icon} width={32} />
-      </div>
-      <span className="text-muted-foreground text-xs">{name}</span>
+      {icon ? (
+        <div className="flex h-10 w-10 items-center justify-center">
+          <Image alt={name} height={32} loading="eager" src={icon} width={32} />
+        </div>
+      ) : (
+        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-100 dark:bg-zinc-800">
+          <span className="font-bold text-xs text-zinc-600 dark:text-zinc-400">
+            {name.charAt(0)}
+          </span>
+        </div>
+      )}
+      <span className="text-muted-foreground text-xs text-center">{name}</span>
     </div>
   );
 }
